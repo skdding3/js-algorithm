@@ -30,5 +30,23 @@ function createMatrix(n) {
 
 console.log(createMatrix(3)) // [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
+// O (log n) - 로그 공간
+function binarySearch(arr, target, left = 0, right = arr.length - 1) {
+    if (left > right) return -1;
+    const mid = Math.floor((left + right) / 2);
+    if (arr[mid] === target) return mid;
+    if (arr[mid] > target) return binarySearch(arr, target, left, mid - 1);
+    return binarySearch(arr, target, mid + 1, right);
+  }
 
-
+// 공간 복잡도
+// |
+// |           O(n²)      <-- 예: 2차원 배열
+// |          *
+// |        *
+// |      *
+// |    *        O(n)
+// |  *
+// |*
+// |__________________________→ 입력 크기(n)
+//  O(1)
